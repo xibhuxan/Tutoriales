@@ -5,6 +5,7 @@
 
 - [Comandos](#comandos)
 - [OpenMediaVault](#openmediavault)
+- [Problemas Nvidia Debian](#ProblemasNvidiaDebian)
 
 ## Comandos
 
@@ -103,3 +104,50 @@ Log de transferencia: activado
 ### Compartir carpetas
 
 En la configuración FTP, ir a la pestaña `compartidos` en el que se podrán vincular o crear las carpetas para compartir con los usuarios que entren mediante FTP.
+
+## Problemas Nvidia Debian
+
+Problema, No funciona el HDMI tras instalar nvidia-driver.
+Solución, Editar el archivo /etc/X11/xorg.conf.d/10-nvidia.conf
+
+Añadir el texto:
+
+```
+Section "Device"
+	Identifier "NVIDIA Card"
+	Driver "nvidia"
+	Option "AllowEmptyInitialConfiguration" "true"
+	Option "ConnectedMonitor" "HDMI-0"
+EndSection
+Section "Device"
+	Identifier "AMD Card"
+	Driver "amdgpu"
+	Option "ConnectedMonitor" "DP-0"
+EndSection
+```
+
+Problema, Internet no funciona correctamente:
+Solución, Editar el archivo /etc/network/interfaces y comentar las últimas líneas.
+
+```
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+
+# The primary network interface (dejada a NetworkManager)
+# allow-hotplug enp3s0
+# iface enp3s0 inet dhcp
+```
+
+Problema, No se muestra el inicio de sesión en la pantalla del portatil, sí en HDMI.
+Solución, Editar el archivo /usr/share/sddm/scripts/Xsetup y añadirle.
+
+```
+xrandr --setprovideroutputsource modesetting NVIDIA-0
+xrandr --auto
+```
