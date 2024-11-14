@@ -5,7 +5,7 @@
 
 - [Comandos](#comandos)
 - [OpenMediaVault](#openmediavault)
-- [Problemas Nvidia Debian](#ProblemasNvidiaDebian)
+- [Problemas Nvidia Debian](#problemas-nvidia-debian)
 
 ## Comandos
 
