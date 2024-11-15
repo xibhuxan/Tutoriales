@@ -125,6 +125,27 @@ Section "Device"
 	Option "ConnectedMonitor" "DP-0"
 EndSection
 ```
+Se hizo una modificación extra, sin saber si influyó. Mantener la anterior en principio.
+
+```
+Section "Device"
+	Identifier "NVIDIA Card"
+	Driver "nvidia"
+	Option "AllowEmptyInitialConfiguration" "true"
+	Option "ConnectedMonitor" "HDMI-0"
+EndSection
+Section "Device"
+	Identifier "AMD Card"
+	Driver "amdgpu"
+	Option "ConnectedMonitor" "eDP-1-0"
+EndSection
+Section "Device"
+	Identifier "DisplayPort-1-0"
+	Option "PreferredMode" "1920x1080"
+	Option "ConnectedMonitor" "DisplayPort-1-0"
+EndSection
+
+```
 
 Problema, Internet no funciona correctamente:
 Solución, Editar el archivo /etc/network/interfaces y comentar las últimas líneas.
