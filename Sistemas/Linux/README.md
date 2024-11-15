@@ -151,3 +151,14 @@ Solución, Editar el archivo /usr/share/sddm/scripts/Xsetup y añadirle.
 xrandr --setprovideroutputsource modesetting NVIDIA-0
 xrandr --auto
 ```
+Problema, No funciona correctamente la salida de video por USB-C (DisplayPort).
+Solución, Instalar el driver de DisplayLink de UBUNTU.  
+https://unix.stackexchange.com/questions/742923/debian-recognizes-usb-c-docking-station-but-monitors-do-not-work  
+https://www.synaptics.com/products/displaylink-graphics/downloads/ubuntu
+
+```
+download the latest driver for Ubuntu (not following guide to unpack driver for other distros, nor this displaylink-debian)
+unzip DisplayLink\ USB\ Graphics\ Software\ for\ Ubuntu5.6.1-EXE.zip
+chmod 755 displaylink-driver-5.6.1-59.184.run
+sudo ./displaylink-driver-5.6.1-59.184.run
+```
